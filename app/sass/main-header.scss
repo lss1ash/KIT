@@ -1,3 +1,25 @@
-.main-header {
-  background-color: red;
+.main-header
+{
+    height: 100vh;
+
+    outline: 1px solid red;
+    background: url(../img/header_background.jpg) no-repeat 0 0;
+    background-color: #43494F;
+    background-size: cover;
+
+    &__wrapper
+    {
+        @include wrapper();
+    }
+
+    &__navigation {
+      margin: 0 0;
+      padding: 50px 25px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__slogan {
+      margin: 0 auto;
+    }
 }
