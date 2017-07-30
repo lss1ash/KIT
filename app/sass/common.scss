@@ -1,8 +1,15 @@
+$font-family: 'OpenSans', sans-serif;
+$color-highlight: #f7600e;
+
 body,
 html
 {
     margin: 0;
     padding: 0;
+
+    font-family: $font-family;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 /* Чтобы не было изображение больше контейнера*/
