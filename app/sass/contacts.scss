@@ -1,0 +1,16 @@
+.contacts {
+  background-color: #3b434c;
+  background-image: $background-gradient, url(../img/contacts_background.jpg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: 0 0, top center;
+  background-size: auto, cover;
+
+  &__wrapper
+  {
+      @include wrapper();
+  }
+
+  &__address {
+
+  }
+}
