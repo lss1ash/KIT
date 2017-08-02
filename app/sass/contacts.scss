@@ -1,16 +1,61 @@
-.contacts {
-  background-color: #3b434c;
-  background-image: $background-gradient, url(../img/contacts_background.jpg);
-  background-repeat: no-repeat, no-repeat;
-  background-position: 0 0, top center;
-  background-size: auto, cover;
+.contacts
+{
+    padding-top: 100px;
+    padding-bottom: 50px;
 
-  &__wrapper
-  {
-      @include wrapper();
-  }
+    background-color: #3b434c;
+    background-image: $background-gradient, url(../img/contacts_background.jpg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: 0 0, bottom center;
+    background-size: auto, cover;
 
-  &__address {
+    &__wrapper
+    {
+        @include wrapper();
+    }
 
-  }
+    &__address
+    {
+        font-family: $font-family;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    &__location
+    {
+        font-size: 35px;
+        line-height: 40px;
+
+        margin: 0 auto 20px;
+
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    &__location--highlighted
+    {
+        color: $color-highlight;
+    }
+
+    &__address-paragraph {
+      font-size: 16px;
+      line-height: 30px;
+      color: #fff;
+      text-align: center;
+      font-weight: 400;
+      font-style: normal;
+      // margin-bottom: 50px;
+    }
+
+    &__map {
+      margin: 0 auto 20px;
+      background-color: #d9ddc9;
+      background: url(../img/map.jpg) no-repeat center center;
+      background-size: cover;
+      width: 850px;
+      height: 400px;
+      border-radius: 10px;
+    }
 }
