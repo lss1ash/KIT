@@ -39,4 +39,79 @@
       font-style: normal;
     }
 
+    &__items-list
+    {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 50px;
+    }
+
+    &__item
+    {
+      position: relative;
+      width: 350px;
+      height: 350px;
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 30px;
+      background-color: blue;
+      background: no-repeat center center;
+      background-size: cover;
+      border-radius: 10px;
+    }
+
+    &__item:hover::before
+    {
+      content: '';
+      width: 350px;
+      height: 350px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $color-highlight;
+      opacity: .85;
+      border-radius: 10px;
+    }
+
+    &__item1
+    {
+      background-image: url(../img/wk1.png);
+    }
+
+    &__item2
+    {
+      background-image: url(../img/wk2.png);
+    }
+
+    &__item3
+    {
+      background-image: url(../img/wk3.png);
+    }
+
+    &__item4
+    {
+      background-image: url(../img/wk4.png);
+    }
+
+    &__item5
+    {
+      background-image: url(../img/wk5.png);
+    }
+
+    &__item6
+    {
+      background-image: url(../img/wk6.png);
+    }
+
+    &__item-header
+    {
+      text-align: center;
+      margin-top: 60px;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 28px;
+    }
+
 }
