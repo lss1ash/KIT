@@ -23,12 +23,14 @@
 
         text-align: center;
         text-transform: uppercase;
+
+        &--highlighted
+        {
+          color: $color-highlight;
+        }
     }
 
-    &__header--highlighted
-    {
-        color: $color-highlight;
-    }
+
 
     &__description {
       font-size: 16px;
@@ -138,7 +140,7 @@
       text-transform: uppercase;
       font-weight: normal;
 
-      margin: 30px auto 0;
+      margin: 40px auto 0;
       padding: 10px;
 
       box-sizing: border-box;
