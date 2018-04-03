@@ -1,0 +1,161 @@
+.main-header
+{
+    background-color: #3b434c;
+    background-image: $background-gradient, url(../img/header_background.jpg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: 0 0, top center;
+    background-size: auto, cover;
+
+    &__wrapper
+    {
+        @include wrapper();
+    }
+
+    // Навигация
+    &__navigation
+    {
+        display: flex;
+
+        margin: 0 0;
+        padding: 40px 30px 0;
+
+        justify-content: space-between;
+    }
+
+    &__company
+    {
+        font-family: $font-family;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 22px;
+
+        color: #fff;
+    }
+
+    &__company--highlighted
+    {
+        font-weight: 600;
+
+        color: $color-highlight;
+    }
+
+    &__menu
+    {
+        font-family: $font-family;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 16px;
+
+        text-decoration: none;
+
+        color: #fff;
+    }
+
+    &__menu:focus {
+      outline-color: $color-highlight;
+    }
+
+    // Слоган и текст
+    &__slogan-container
+    {
+        display: flex;
+
+        box-sizing: border-box;
+        margin: 80px auto 0;
+        padding: 0 0 125px;
+
+        flex-wrap: wrap;
+    }
+
+    &__logo
+    {
+        box-sizing: border-box;
+        width: 40%;
+        margin-left: auto;
+
+        @media (max-width: 804px)
+        {
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+    &__slogan
+    {
+        font-family: $font-family;
+        font-size: 40px;
+        font-weight: 700;
+        font-style: normal;
+        line-height: 50px;
+
+        box-sizing: border-box;
+        margin-right: auto;
+        margin-left: 50px;
+
+        text-align: left;
+        text-transform: uppercase;
+
+        color: $color-highlight;
+
+        @media (max-width: 804px)
+        {
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+        }
+    }
+
+    &__description
+    {
+        font-family: $font-family;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 40px;
+
+        box-sizing: border-box;
+        margin: 0 15% 60px;
+
+        text-align: center;
+
+        color: #fff;
+    }
+
+    &__hire-us,
+    &__our-works
+    {
+        font-family: $font-family;
+        font-size: 16px;
+        font-weight: 600;
+
+        display: block;
+
+        min-width: 210px;
+        margin: 0 15px 25px auto;
+        padding: 15px 0;
+
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        color: #fff;
+        border: 1px solid #65696e;
+        border-radius: 10px;
+    }
+
+    &__our-works
+    {
+        margin-right: auto;
+        margin-left: 15px;
+    }
+
+    &__hire-us:hover,
+    &__hire-us:focus,
+    &__our-works:hover,
+    &__our-works:focus
+    {
+        border-color: transparent;
+        background-color: $color-highlight;
+        outline: none;
+    }
+}

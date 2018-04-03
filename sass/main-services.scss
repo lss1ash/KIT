@@ -1,0 +1,91 @@
+.main-services
+{
+    background-color: #fff;
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px 100px;
+
+    &__service-list
+    {
+        display: flex;
+
+        margin: 0 auto;
+
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    &__service-item
+    {
+        width: 20%;
+        min-width: 150px;
+        max-width: 300px;
+        padding-top: 250px;
+
+        position: relative;
+    }
+
+    &__service-item::before {
+      position: absolute;
+      top: 80px;
+      left: calc(50% - 75px);
+      width: 150px;
+      height: 150px;
+      content:'';
+      border-radius:50%;
+      border:1px solid $color-darkfont;
+      opacity: 0.3;
+    }
+
+    &__service-term
+    {
+        font-family: $font-family;
+        font-size: 16px;
+        font-weight: 600;
+        font-style: normal;
+        line-height: 40px;
+
+        margin: 0;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        color: $color-darkfont;
+    }
+
+    &__service-item--printer-icon {
+      background: url(../img/printer.png) no-repeat center 130px;
+      background-size: 55px auto;
+    }
+
+    &__service-item--desktop-icon {
+      background: url(../img/desktop.png) no-repeat center 135px;
+      background-size: 57px auto;
+    }
+
+    &__service-item--mobile-icon {
+      background: url(../img/mobile.png) no-repeat center 127px;
+      background-size: 35px auto;
+    }
+
+    &__service-item--ruler-icon {
+      background: url(../img/ruler.png) no-repeat center 127px;
+      background-size: 36px auto;
+    }
+
+    &__service-definition
+    {
+        font-family: $font-family;
+        font-size: 14px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 26px;
+
+        margin: 0;
+
+        text-align: center;
+
+        color: $color-darkfont;
+    }
+}

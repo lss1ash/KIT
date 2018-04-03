@@ -1,0 +1,42 @@
+.our-works
+{
+    margin: 0 auto;
+    padding: 100px 15px;
+
+    // padding-top: 150px;
+
+    background-color: #fff;
+
+    &__wrapper
+    {
+        @include wrapper();
+    }
+
+    &__header
+    {
+        font-size: 35px;
+        font-weight: 600;
+        font-style: normal;
+        line-height: 40px;
+
+        margin: 0 auto 20px;
+
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__header--highlighted
+    {
+        color: $color-highlight;
+    }
+
+    &__description {
+      font-size: 16px;
+      line-height: 30px;
+      color: $color-darkfont;
+      text-align: center;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+}
