@@ -5,7 +5,7 @@
 
     // padding-top: 150px;
 
-    background-color: #fff;
+    background-color: $color-light;
 
     &__wrapper
     {
@@ -23,11 +23,11 @@
 
         text-align: center;
         text-transform: uppercase;
-    }
 
-    &__header--highlighted
-    {
-        color: $color-highlight;
+        &--highlighted
+        {
+          color: $color-highlight;
+        }
     }
 
     &__description {
@@ -39,4 +39,113 @@
       font-style: normal;
     }
 
+    &__items-list
+    {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 50px;
+    }
+
+    &__item
+    {
+      position: relative;
+      width: 350px;
+      height: 350px;
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 30px;
+      background-color: gray;
+      background: no-repeat center center;
+      background-size: cover;
+      border-radius: 10px;
+    }
+
+    &__item--hover
+    {
+      position: absolute;
+      box-sizing: border-box;
+      width: 350px;
+      height: 350px;
+      padding: 20px;
+      top: 0;
+      left: 0;
+      background-color: rgba(247, 96, 14, 0);
+      border-radius: 10px;
+      opacity: 0;
+    }
+
+    &__item--hover:hover
+    {
+      background-color: rgba(247, 96, 14, .85);
+      opacity: 1;
+    }
+
+    &__item1
+    {
+      background-image: url(../img/wk1.png);
+    }
+
+    &__item2
+    {
+      background-image: url(../img/wk2.png);
+    }
+
+    &__item3
+    {
+      background-image: url(../img/wk3.png);
+    }
+
+    &__item4
+    {
+      background-image: url(../img/wk4.png);
+    }
+
+    &__item5
+    {
+      background-image: url(../img/wk5.png);
+    }
+
+    &__item6
+    {
+      background-image: url(../img/wk6.png);
+    }
+
+    &__item-header
+    {
+      text-align: center;
+      margin-top: 60px;
+      color: $color-light;
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: 30px;
+    }
+
+    &__item-description
+    {
+      text-align: center;
+      color: $color-light;
+      font-size: 15px;
+      line-height: 25px;
+    }
+
+    &__item-link
+    {
+      display: block;
+      color: $color-highlight;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: normal;
+
+      margin: 40px auto 0;
+      padding: 10px;
+
+      box-sizing: border-box;
+      width: 200px;
+      height: 45px;
+      border: 1px solid $color-light;
+      border-radius: 10px;
+      background-color: $color-light;
+    }
 }
