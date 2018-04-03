@@ -7,17 +7,31 @@
 
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
-    "browser-sync": "^2.18.13",
-    "gulp": "^3.9.1",
-    "gulp-csso": "^3.0.0",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-postcss": "^7.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0"
+    "autoprefixer": "6.7.7",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
+    "babel-register": "6.26.0",
+    "browser-sync": "2.18.8",
+    "chai": "4.1.2",
+    "css-mqpacker": "6.0.0",
+    "del": "2.2.2",
+    "eslint": "4.2.0",
+    "eslint-config-htmlacademy": "0.4.x",
+    "gulp": "3.9.1",
+    "gulp-better-rollup": "3.1.0",
+    "gulp-csso": "3.0.0",
+    "gulp-imagemin": "3.2.0",
+    "gulp-mocha": "5.0.0",
+    "gulp-plumber": "1.1.0",
+    "gulp-postcss": "7.0.0",
+    "gulp-rename": "1.2.2",
+    "gulp-sass": "3.1.0",
+    "gulp-sourcemaps": "2.6.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "eslint js/",
+    "build": "gulp build",
+    "start": "gulp serve",
+    "test": "npm run eslint && gulp test"
   },
   "repository": {
     "type": "git",

@@ -1,55 +1,116 @@
 'use strict';
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var cssminify = require('gulp-csso');
-var htmlminify = require('gulp-htmlmin');
-var rename = require("gulp-rename");
-var postcss = require("gulp-postcss");
-var autoprefixer = require("autoprefixer");
-var bsync = require("browser-sync").create();
+const del = require('del');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const plumber = require('gulp-plumber');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const server = require('browser-sync').create();
+const mqpacker = require('css-mqpacker');
+const minify = require('gulp-csso');
+const rename = require('gulp-rename');
+const imagemin = require('gulp-imagemin');
+const rollup = require('gulp-better-rollup');
+const sourcemaps = require('gulp-sourcemaps');
+const mocha = require('gulp-mocha');
 
-// Prepare prefixed CSS
-gulp.task('sass', function () {
-  return gulp.src('./app/sass/style.scss')
-    .pipe(sass().on('error', sass.logError))
+gulp.task('style', function () {
+  return gulp.src('sass/style.scss')
+    .pipe(plumber())
+    .pipe(sass())
     .pipe(postcss([
-      autoprefixer({browsers: ["last 2 versions"]})
-      ]))
-    .pipe(cssminify())
-    .pipe(rename("style.min.css"))
-    .pipe(gulp.dest('./build/css/'))
-    ;//.pipe(bsync.reload({stream: true}));
+      autoprefixer({
+        browsers: [
+          'last 1 version',
+          'last 2 Chrome versions',
+          'last 2 Firefox versions',
+          'last 2 Opera versions',
+          'last 2 Edge versions'
+        ]
+      }),
+      mqpacker({sort: true})
+    ]))
+    .pipe(gulp.dest('build/css'))
+    .pipe(server.stream())
+    .pipe(minify())
+    .pipe(rename('style.min.css'))
+    .pipe(gulp.dest('build/css'));
 });
 
-// Copy html to build
-gulp.task('html', function () {
-  return gulp.src('./app/**/*.html')
-    .pipe(htmlminify({collapseWhitespace: true}))
-    .pipe(gulp.dest('./build/'));
+gulp.task('scripts', function () {
+  return gulp.src('js/main.js')
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(rollup({}, 'iife'))
+    .pipe(sourcemaps.write(''))
+    .pipe(gulp.dest('build/js'));
 });
 
-// Browser sync
-// gulp.task('browser-sync', function () {
-//    var files = [
-//       '**/*.html',
-//       'css/**/*.css',
-//       'img/**/*.{png, jpg, svg, gif}',
-//       'js/**/*.js'
-//    ];
-//
-//    bsync.init(files, {
-//       server: {
-//          baseDir: './build'
-//       }
-//       //,
-//       //notify: false // Отключаем уведомления
-//    });
-// });
-
-gulp.task('listener', function() {
-  gulp.watch('./app/sass/**/*.scss', ['sass']);
-  gulp.watch('./app/**/*.html', ['html']);
+gulp.task('test', function () {
+  return gulp
+    .src(['js/**/*.test.js'], { read: false })
+    .pipe(mocha({
+      compilers: ['js:babel-register'],
+      reporter: 'spec'
+    }));
 });
 
-gulp.task('build', ['sass', 'html']);
+gulp.task('imagemin', ['copy'], function () {
+  return gulp.src('build/img/**/*.{jpg,png,gif}')
+    .pipe(imagemin([
+      imagemin.optipng({optimizationLevel: 3}),
+      imagemin.jpegtran({progressive: true})
+    ]))
+    .pipe(gulp.dest('build/img'));
+});
+
+
+gulp.task('copy-html', function () {
+  return gulp.src('*.{html,ico}')
+    .pipe(gulp.dest('build'))
+    .pipe(server.stream());
+});
+
+gulp.task('copy', ['copy-html', 'scripts', 'style'], function () {
+  return gulp.src([
+    'fonts/**/*.{woff,woff2}',
+    'img/*.*'
+  ], {base: '.'})
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('clean', function () {
+  return del('build');
+});
+
+gulp.task('js-watch', ['scripts'], function (done) {
+  server.reload();
+  done();
+});
+
+gulp.task('serve', ['assemble'], function () {
+  server.init({
+    server: './build',
+    notify: false,
+    open: true,
+    port: 3502,
+    ui: false
+  });
+
+  gulp.watch('sass/**/*.{scss,sass}', ['style']);
+  gulp.watch('*.html').on('change', (e) => {
+    if (e.type !== 'deleted') {
+      gulp.start('copy-html');
+    }
+  });
+  gulp.watch('js/**/*.js', ['js-watch']);
+});
+
+gulp.task('assemble', ['clean'], function () {
+  gulp.start('copy', 'style');
+});
+
+gulp.task('build', ['assemble'], function () {
+  gulp.start('imagemin');
+});
