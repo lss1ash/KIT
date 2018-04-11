@@ -1,7 +1,7 @@
 .main-header
 {
     background-color: #3b434c;
-    background-image: $background-gradient, url(../img/header_background.jpg);
+    background-image: $background-gradient, url(../img/header_bg.png);
     background-repeat: no-repeat, no-repeat;
     background-position: 0 0, top center;
     background-size: auto, cover;
@@ -95,6 +95,7 @@
 
         text-align: left;
         text-transform: uppercase;
+        text-shadow: $shadow-orange;
 
         color: $color-highlight;
 
@@ -116,6 +117,7 @@
         box-sizing: border-box;
         margin: 0 15% 60px;
 
+        text-shadow: $shadow-white;
         text-align: center;
 
         color: #fff;
