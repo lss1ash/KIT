@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>КИТ</title>
     <link href="css/style.min.css" rel="stylesheet">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800&amp;subset=cyrillic" rel="stylesheet"> -->
+
   </head>
 
   <body>
@@ -15,9 +15,6 @@
       <div class="main-header__wrapper">
 
         <nav class="main-header__navigation">
-
-          <!-- <img class="main-header__logo" src="#" alt="Логотип ООО КИТ"> -->
-          <!-- WIDTH - HEIGHT?? -->
 
           <a class="main-header__company">ООО <span class="main-header__company--highlighted">КИТ</span></a>
 
@@ -78,7 +75,7 @@
 
         </address>
 
-        <div class="contacts__map"></div>
+        <div class="contacts__map" id="map"></div>
 
       </div>
 
@@ -237,6 +234,28 @@
       </div>
 
     </footer>
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+    <script type="text/javascript">
+      ymaps.ready(init);
+      var myMap;
+
+      function init(){
+        const coords = [59.568701319497556,150.80137490197745];
+          myMap = new ymaps.Map("map", {
+              center: coords,
+              zoom: 15,
+              controls: ['zoomControl']
+          });
+
+          myPlacemark = new ymaps.Placemark(coords, {
+            hintContent: `КИТ!`,
+            balloonContent: `Компания интеграционных технологий &copy;`
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+      }
+    </script>
 
   </body>
 
