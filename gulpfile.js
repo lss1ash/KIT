@@ -33,6 +33,7 @@ gulp.task('style', function () {
     .pipe(minify())
     .pipe(rename('style.min.css'))
     .pipe(gulp.dest('build/css'));
+    // .pipe(del('build/css/style.css'));
 });
 
 // gulp.task('scripts', function () {
@@ -66,6 +67,11 @@ gulp.task('copy', ['copy-html', 'style'], function () {
     'img/*.*'
   ], {base: '.'})
     .pipe(gulp.dest('build'));
+});
+
+gulp.task('gh-pages', function () {
+  return gulp.src('build/**/*')
+    .pipe(gulp.dest('gh-pages'));
 });
 
 gulp.task('clean', function () {
